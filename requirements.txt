@@ -9,3 +9,4 @@ xgboost
 seaborn
 matplotlib
 imbalanced-learn
+ipykernel
