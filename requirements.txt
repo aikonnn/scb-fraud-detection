@@ -6,3 +6,6 @@ sqlalchemy
 scikit-learn
 pandas
 xgboost
+seaborn
+matplotlib
+imbalanced-learn
