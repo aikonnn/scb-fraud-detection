@@ -9,7 +9,7 @@
 ├── db/
 │   └── frauds.db             # SQLite DB for demo
 ├── data/
-│   └── fraud_mock.csv        # dataset
+│   └── fraud_mock.csv        # dataset 
 ├── eda/
 │   └── SCB_EDA.ipynb      # EDA on dataset (Part 1)
 ├── model_dev/
@@ -20,6 +20,7 @@
 └── architecture.png      # System design diagram 
                             ( Part 4)
 ```
+Download dataset from https://scbpocseasta001stdsbx.z23.web.core.windows.net/ , extract file, and place in data folder as specified in the structure above.
 ## Setup Instructions
 ### Install Dependencies
 pip: 
