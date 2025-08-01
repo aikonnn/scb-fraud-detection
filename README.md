@@ -38,3 +38,4 @@ Run the entirety of SCB_Model.ipynb.
 ```bash
 uvicorn app:app --reload
 ```
+The API will be run on port 8000.
