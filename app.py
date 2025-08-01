@@ -20,9 +20,16 @@ Base = declarative_base()
 class FraudRecord(Base):
     __tablename__ = "frauds"
     id = Column(Integer, primary_key=True)
-    src_acc = Column(String)
-    dst_acc = Column(String)
+    time_ind = Column(Integer)
+    transac_type = Column(String)
     amount = Column(Float)
+    src_acc = Column(String)
+    src_bal = Column(Float)
+    src_new_bal = Column(Float)
+    dst_acc = Column(String)
+    dst_bal = Column(Float)
+    dst_new_bal = Column(Float)
+    is_flagged_fraud = Column(Integer)
     is_fraud = Column(Boolean)
 
 Base.metadata.create_all(engine)
@@ -60,9 +67,16 @@ def predict(t: Transaction):
     if prediction == 1:
         session = Session()
         record = FraudRecord(
-            src_acc=t.src_acc,
-            dst_acc=t.dst_acc,
+            time_ind=t.time_ind,
+            transac_type=t.transac_type,
             amount=t.amount,
+            src_acc=t.src_acc,
+            src_bal=t.src_bal,
+            src_new_bal=t.src_new_bal,
+            dst_acc=t.dst_acc,
+            dst_bal=t.dst_bal,
+            dst_new_bal=t.dst_new_bal,
+            is_flagged_fraud=t.is_flagged_fraud,
             is_fraud=True
         )
         session.add(record)
@@ -75,4 +89,20 @@ def predict(t: Transaction):
 def get_frauds():
     session = Session()
     results = session.query(FraudRecord).all()
-    return [{"src_acc": r.src_acc, "dst_acc": r.dst_acc, "amount": r.amount} for r in results]
+    return [
+        {
+            "id": r.id,
+            "time_ind": r.time_ind,
+            "transac_type": r.transac_type,
+            "amount": r.amount,
+            "src_acc": r.src_acc,
+            "src_bal": r.src_bal,
+            "src_new_bal": r.src_new_bal,
+            "dst_acc": r.dst_acc,
+            "dst_bal": r.dst_bal,
+            "dst_new_bal": r.dst_new_bal,
+            "is_flagged_fraud": r.is_flagged_fraud,
+            "is_fraud": r.is_fraud
+        }
+        for r in results
+    ]
