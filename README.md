@@ -17,7 +17,7 @@
 │                            evaluate model (Part 2)
 ├── requirements.txt
 ├── README.md
-└── architecture.png      # System design diagram 
+└── architecture.drawio     # System design diagram 
                             ( Part 4)
 ```
 Download dataset from https://scbpocseasta001stdsbx.z23.web.core.windows.net/ , extract file, and place in data folder as specified in the structure above.
